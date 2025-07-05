@@ -62,9 +62,7 @@ export default function useGsapReveal({
         scrollTrigger: {
           trigger: el,
           start,
-          toggleActions: once
-            ? "play none none none"
-            : "play reverse play reverse",
+          toggleActions: once ? "play none none none" : "play none play none",
           markers: false,
           onEnter: () => {
             // If the trigger is already in view, play animation manually
