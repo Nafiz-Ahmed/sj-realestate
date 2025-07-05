@@ -50,7 +50,7 @@ export default function useGsapReveal({
         stagger: stagger ? staggerDelay : 0,
         scrollTrigger: {
           trigger: el,
-          start: "top 85%",
+          start: "top+=5% 90%",
           toggleActions: once
             ? "play none none none"
             : "play reverse play reverse",
