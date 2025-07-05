@@ -21,9 +21,9 @@ export default function useGsapReveal({
   from = "bottom",
   stagger = false,
   delay = 0,
-  duration = 1,
+  duration = 0.7,
   staggerDelay = 0.1,
-  once = true,
+  once = false,
   skew = 3,
   start = "top 90%",
 }) {
