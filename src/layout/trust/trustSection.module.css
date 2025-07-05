@@ -1,0 +1,49 @@
+.container {
+  margin-top: 20px;
+}
+
+.wrapper {
+  max-width: 700px;
+  padding: 120px var(--edge-gap);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 500;
+  color: var(--secondary-text-color);
+}
+
+.heading span {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.point {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+}
+
+.text {
+  font-size: var(--text-size);
+  color: var(--secondary-text-color);
+  line-height: 1.5;
+}
+
+.text strong {
+  font-weight: 600;
+  color: var(--text-color);
+}

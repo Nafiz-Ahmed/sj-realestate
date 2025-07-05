@@ -1,0 +1,70 @@
+/* components/ContactForm.module.css */
+.formContainer {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: var(--edge-gap);
+  background-color: var(--text-color);
+  border-radius: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--secondary-text-color);
+  font-size: calc(var(--secondary-text));
+}
+
+.input,
+.textarea {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: calc(var(--border-radius) * 1.5);
+  font-size: calc(var(--secondary-text));
+  line-height: 1.5;
+  border: 1px solid rgba(136, 136, 136, 0.1);
+  background: rgba(187, 187, 187, 0.15);
+  color: rgba(153, 153, 153, 1);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.textarea {
+  min-height: 6rem;
+  height: 8rem;
+  max-height: 8rem;
+  overflow: scroll;
+  resize: vertical;
+  font-family: "Satoshi";
+}
+
+.submitButton {
+  padding: 0.7rem 1rem;
+  background-color: #ffffff;
+  font-weight: bold;
+  color: var(--text-color);
+  font-weight: 500;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.submitButton:hover {
+  background-color: #ebebeb;
+}
+
+.submitButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+}

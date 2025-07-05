@@ -1,0 +1,132 @@
+.footerContainer {
+  padding: 0 var(--edge-gap);
+  padding-top: 30px;
+  padding-bottom: 15px;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 50px;
+}
+
+.top {
+  display: flex;
+  max-width: 900px;
+  margin: var(--margin-auto);
+}
+
+.getInTouch {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.getInTouch > h1 {
+  font-size: var(--hero-title);
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.getInTouch > p {
+  font-size: var(--primary-text);
+  color: var(--secondary-text-color);
+  margin-top: 10px;
+  width: 100%;
+  font-weight: 500;
+  max-width: 330px;
+  line-height: 1.5;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottomContent {
+  display: flex;
+  margin: 50px 0;
+}
+
+.logoSection {
+  flex: 1;
+}
+
+.contactSection {
+  flex: 1;
+}
+
+.title {
+  font-size: var(--primary-text);
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.description {
+  font-size: var(--primary-text);
+  color: var(--secondary-text-color);
+  margin-top: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.logoSection > .description {
+  max-width: 250px;
+}
+
+.socialSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+@media screen and (max-width: 768px) {
+  .top {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .getInTouch {
+    align-items: center;
+    justify-content: center;
+  }
+  .getInTouch > h1,
+  .getInTouch > p {
+    text-align: center;
+  }
+
+  .bottomContent {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logoSection,
+  .contactSection,
+  .socialSection {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .description {
+    width: 100%;
+    text-align: center;
+  }
+
+  .title,
+  .contactSection > .description > p > span {
+    display: none;
+  }
+
+  .contactSection > .description {
+    font-weight: 600;
+  }
+
+  .socialSection {
+    margin-top: 20px;
+  }
+}

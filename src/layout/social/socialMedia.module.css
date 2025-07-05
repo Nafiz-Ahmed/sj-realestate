@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.icon {
+  filter: grayscale(1);
+}
+
+.icon:hover {
+  filter: grayscale(0);
+}

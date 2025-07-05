@@ -1,0 +1,96 @@
+/* 
+This is a CSS file that defines the Satoshi font family.
+It includes various font weights and styles, such as Black, Bold, Medium, Light, Regular, and their respective italic versions.
+The fonts are loaded from the specified URLs in the "src" property of each @font-face rule.
+The format is specified as "opentype" for all the font files.
+This allows the browser to use these fonts when rendering text on the webpage.
+The font family is named "Satoshi" and can be used in CSS styles by referencing this name.
+The font files are expected to be located in the "/fonts/" directory relative to the root of the project.
+This file is typically imported into a main CSS file or a global stylesheet in a web application to ensure that the Satoshi font is available throughout the application.
+*/
+
+/* 
+Giresteala is a custom font that is defined here.
+It is loaded as an OpenType font from the specified URL.
+*/
+@font-face {
+  font-family: "gristela";
+  src: url("/fonts/gristela/gristela.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* 
+Satoshi font definitions
+This section defines the Satoshi font family with various weights and styles.
+*/
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-BlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi/Satoshi-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}

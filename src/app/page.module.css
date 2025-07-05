@@ -1,0 +1,15 @@
+.pageContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #d34a4a;
+  width: 100vw;
+  height: 100vh;
+}
+
+.try {
+  position: relative;
+  background-color: #d34a4a;
+  width: 100%;
+}

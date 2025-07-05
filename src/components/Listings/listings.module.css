@@ -1,0 +1,32 @@
+.listings {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-color: var(--secondary-background-color);
+  padding: 100px 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--edge-gap);
+}
+
+.title {
+  font-size: var(--primary-title);
+  color: var(--text-color);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.details {
+  font-weight: 500;
+  color: var(--secondary-text-color);
+  font-size: var(--primary-text);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 10px;
+}

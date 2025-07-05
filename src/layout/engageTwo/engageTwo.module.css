@@ -1,0 +1,22 @@
+.wrapper {
+  margin: 120px var(--edge-gap);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.wrapper h1 {
+  font-size: var(--primary-title);
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.wrapper p {
+  font-size: calc(var(--primary-text) * 1.1);
+  color: var(--secondary-color);
+  font-weight: 500;
+  width: 100%;
+  max-width: 700px;
+  line-height: 1.5;
+}

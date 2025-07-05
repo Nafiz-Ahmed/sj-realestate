@@ -1,0 +1,145 @@
+.header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(120%);
+  position: relative;
+  height: var(--header-height);
+  z-index: var(--z-top);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+  padding: 0 var(--edge-gap);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 215px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  font-family: var(--font-family-logo);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.navLinks {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  font-weight: 500;
+  font-size: 15px;
+  position: relative;
+  padding: 10px 0;
+}
+
+.navLink.activeMenu,
+.navLink:hover {
+  color: var(--text-color);
+  transition: all var(--transition);
+  text-decoration: underline;
+}
+
+.activeMenu {
+  color: var(--secondary-text-color);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 2px;
+  background: var(--primary-color);
+  margin: 4px 0;
+  border-radius: var(--round-border);
+  transition: var(--transition);
+}
+
+.hamburger.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(2.5px, 5px);
+}
+
+.hamburger.open .bar:nth-child(2) {
+  transform: rotate(-45deg) translate(2.5px, -5px);
+}
+
+.bar {
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .headerContent {
+    flex-direction: column;
+    align-items: start;
+    margin-top: 10px;
+  }
+
+  .logoContainer {
+    width: 100%;
+  }
+
+  .expandedHeader {
+    height: 500px;
+  }
+
+  .navLinks {
+    display: none;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    margin-top: 30px;
+    gap: 30px;
+  }
+
+  .navLink {
+    position: relative;
+    font-size: 32px;
+    font-weight: 500;
+    transition: all var(--transition);
+  }
+
+  .navLinksMobileOpen {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+}

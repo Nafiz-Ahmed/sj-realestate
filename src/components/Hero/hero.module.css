@@ -1,0 +1,97 @@
+.hero {
+  width: 100vw;
+  height: 600px;
+  background-image: url("/images/hero3.jpeg");
+  background-size: cover;
+  background-position: 55%, 17%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+.heroContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 30px;
+  padding: 0 var(--edge-gap);
+}
+
+.title > div {
+  position: relative;
+  color: var(--text-color-white);
+  font-size: var(--hero-title);
+  line-height: 60px;
+  width: 100%;
+  font-weight: 900;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
+}
+
+.description {
+  position: relative;
+  color: var(--text-color-white);
+  font-size: var(--primary-text);
+  width: 100%;
+  max-width: 400px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.CTA {
+  display: flex;
+  gap: 20px;
+}
+
+/* Add these to your existing CSS */
+.splitLine {
+  overflow: hidden;
+  display: block;
+}
+
+.splitWord {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.splitChar {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .heroContent .title > h1 {
+    text-align: center;
+  }
+
+  .description {
+    font-size: var(--primary-text);
+    max-width: 300px;
+    text-align: center;
+    margin: var(--margin-auto);
+  }
+
+  .CTA {
+    flex-direction: column;
+    align-items: center;
+  }
+}

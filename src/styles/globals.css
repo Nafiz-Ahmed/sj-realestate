@@ -1,0 +1,37 @@
+body {
+  font-family: "Satoshi", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  position: relative;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+#container {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+svg,
+img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.char {
+  transform: translateY(115px);
+  transition: transform 0.5s;
+}
+
+#animate {
+  opacity: 0;
+}
