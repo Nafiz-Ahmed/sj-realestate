@@ -1,12 +1,19 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import styles from "./propertySold.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { Money, Home, Location, Bed, Bath, SQ } from "@/utils/CardIcons";
+import useGsapReveal from "@/hooks/useGsapReveal";
 
 function PropertySold({ data }) {
+  const card = useRef(null);
+
+  useGsapReveal({ ref: card });
+
   return (
-    <div className={styles.propertySold}>
+    <div ref={card} className={styles.propertySold}>
       <Link href="/">
         <div className={styles.imageBox}>
           <Image

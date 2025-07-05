@@ -21,7 +21,7 @@ export default function useGsapReveal({
   from = "bottom",
   stagger = false,
   delay = 0,
-  duration = 0.7,
+  duration = 1,
   staggerDelay = 0.1,
   once = true,
   skew = 3,
@@ -36,60 +36,48 @@ export default function useGsapReveal({
     const targets = stagger ? el.children : el;
     const fromVars = directionMap[from] || directionMap.bottom;
 
-    let ctx;
+    const ctx = gsap.context(() => {
+      gsap.set(targets, {
+        opacity: 0,
+        x: fromVars.x,
+        y: fromVars.y,
+        skewY: skew,
+      });
 
-    const setupAnimation = () => {
-      ctx = gsap.context(() => {
-        // Step 1: Set initial state (invisible and offset)
-        gsap.set(targets, {
-          opacity: 0,
-          x: fromVars.x,
-          y: fromVars.y,
-          skewY: skew,
-        });
+      const animationProps = {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        skewY: 0,
+        duration,
+        delay,
+        ease: "power3.out",
+        stagger: stagger ? staggerDelay : 0,
+        immediateRender: false,
+      };
 
-        // Step 2: Define animation
-        const anim = {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          skewY: 0,
-          duration,
-          delay,
-          ease: "power3.out",
-          stagger: stagger ? staggerDelay : 0,
-          immediateRender: false,
-        };
+      // Main GSAP animation with ScrollTrigger
+      gsap.to(targets, {
+        ...animationProps,
+        scrollTrigger: {
+          trigger: el,
+          start,
+          toggleActions: once
+            ? "play none none none"
+            : "play reverse play reverse",
+          markers: false,
+          onEnter: () => {
+            // If the trigger is already in view, play animation manually
+            const isVisible = isInViewport(el);
+            if (isVisible) {
+              gsap.to(targets, animationProps);
+            }
+          },
+        },
+      });
+    }, el);
 
-        const isVisible = isInViewport(el);
-
-        if (isVisible) {
-          // Element already visible (e.g., Footer)
-          gsap.to(targets, anim);
-        } else {
-          // ScrollTrigger based animation
-          gsap.to(targets, {
-            ...anim,
-            scrollTrigger: {
-              trigger: el,
-              start,
-              toggleActions: once
-                ? "play none none none"
-                : "play reverse play reverse",
-              markers: false,
-            },
-          });
-        }
-      }, el);
-    };
-
-    // ⏱ Delay execution to ensure layout is ready
-    const rafId = requestAnimationFrame(setupAnimation);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      ctx?.revert();
-    };
+    return () => ctx.revert();
   }, [
     delay,
     duration,
@@ -103,6 +91,7 @@ export default function useGsapReveal({
     start,
   ]);
 
+  // Helper: Check if element is in viewport
   function isInViewport(el) {
     if (!el || typeof window === "undefined") return false;
     const rect = el.getBoundingClientRect();

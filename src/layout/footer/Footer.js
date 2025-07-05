@@ -14,10 +14,10 @@ function Footer() {
   const des = useRef(null);
   const bottom = useRef(null);
 
-  useGsapReveal({ ref: getIn });
-  useGsapReveal({ ref: des });
-  useGsapReveal({ ref: form, duration: 1 });
-  useGsapReveal({ ref: bottom, stagger: true });
+  useGsapReveal({ ref: getIn, skew: 0 });
+  useGsapReveal({ ref: des, skew: 0 });
+  useGsapReveal({ ref: form, duration: 1, skew: 0 });
+  useGsapReveal({ ref: bottom, stagger: true, skew: 0 });
 
   return (
     <div className={styles.footerContainer}>
