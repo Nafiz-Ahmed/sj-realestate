@@ -14,45 +14,64 @@ const RateHubCalculator = () => {
   const loadWidget = () => {
     if (!containerRef.current) return;
 
+    // Remove previous script if exists
+    const existingScript = document.getElementById("ratehub-script");
+    if (existingScript) {
+      existingScript.remove();
+    }
+
     // Clear previous content in case of retry
     containerRef.current.innerHTML = "";
 
-    const script = document.createElement("script");
-    script.id = "ratehub-script";
-    script.src = "https://www.ratehub.ca/scripts/rh-widget-loader.js";
-    script.setAttribute("rh-title", "Mortgage Payment Calculator");
-    script.setAttribute(
-      "rh-frame-title",
-      "Ratehub.ca mortgage payment calculator"
-    );
-    script.setAttribute("rh-widget-key", "PaymentCalculator");
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.id = "ratehub-script";
+      script.src = "https://www.ratehub.ca/scripts/rh-widget-loader.js";
+      script.setAttribute("rh-title", "Mortgage Payment Calculator");
+      script.setAttribute(
+        "rh-frame-title",
+        "Ratehub.ca mortgage payment calculator"
+      );
+      script.setAttribute("rh-widget-key", "PaymentCalculator");
 
-    // Set a timeout to detect failure
-    const timeout = setTimeout(() => {
-      setLoading(false);
-      setRetry(true);
-    }, 10000); // 10s timeout
+      // Timeout to detect failure
+      const timeout = setTimeout(() => {
+        reject(new Error("Load timeout"));
+      }, 10000); // 10s timeout
 
-    script.onload = () => {
-      clearTimeout(timeout);
-      setLoading(false);
-      setRetry(false);
-    };
+      script.onload = () => {
+        clearTimeout(timeout);
+        resolve();
+      };
 
-    script.onerror = () => {
-      clearTimeout(timeout);
-      setLoading(false);
-      setRetry(true);
-    };
+      script.onerror = () => {
+        clearTimeout(timeout);
+        reject(new Error("Load error"));
+      };
 
-    containerRef.current.appendChild(script);
+      containerRef.current.appendChild(script);
+    });
   };
 
   useEffect(() => {
-    if (loadAttempts < MAX_ATTEMPTS) {
-      setLoading(true);
-      loadWidget();
+    if (loadAttempts >= MAX_ATTEMPTS) {
+      setLoading(false);
+      setRetry(true);
+      return;
     }
+
+    setLoading(true);
+    setRetry(false);
+
+    loadWidget()
+      .then(() => {
+        setLoading(false);
+        setRetry(false);
+      })
+      .catch(() => {
+        setLoading(false);
+        setRetry(true);
+      });
   }, [loadAttempts]);
 
   const handleRetry = () => {
@@ -73,10 +92,10 @@ const RateHubCalculator = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: `${
-              loading ? "var(--secondary-background-color)" : "transparent"
-            }`,
-            borderRadius: `${loading && "40px"}`,
+            backgroundColor: loading
+              ? "var(--secondary-background-color)"
+              : "transparent",
+            borderRadius: loading ? "40px" : "0",
           }}
         >
           {loading && (

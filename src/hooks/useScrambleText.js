@@ -25,8 +25,6 @@ export function useScrambleText(ref, words = [], options = {}) {
   } = options;
 
   useGSAP(() => {
-    ref.current.removeAttribute("id");
-
     if (!ref.current || !words.length) return;
 
     const startLoop = () => {

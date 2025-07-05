@@ -79,7 +79,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .heroContent .title > h1 {
+  .heroContent .title > div {
     text-align: center;
   }
 
