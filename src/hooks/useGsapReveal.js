@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,10 +23,12 @@ export default function useGsapReveal({
   delay = 0,
   duration = 0.7,
   staggerDelay = 0.1,
-  once = true, // play only once by default
+  once = true,
   skew = 3,
-  start = "top 90%", // sensible default start trigger
+  start = "top 90%",
 }) {
+  const pathname = usePathname(); // detects client-side route change
+
   useLayoutEffect(() => {
     if (!ref?.current) return;
 
@@ -34,7 +37,7 @@ export default function useGsapReveal({
     const targets = stagger ? el.children : el;
 
     const ctx = gsap.context(() => {
-      // Immediately set initial styles to prevent FOUC
+      // Set initial hidden state
       gsap.set(targets, {
         opacity: 0,
         x: fromVars.x,
@@ -42,7 +45,7 @@ export default function useGsapReveal({
         skewY: skew,
       });
 
-      // Animate to visible
+      // Animate to visible with ScrollTrigger
       gsap.to(targets, {
         opacity: 1,
         x: 0,
@@ -52,19 +55,26 @@ export default function useGsapReveal({
         delay,
         ease: "power3.out",
         stagger: stagger ? staggerDelay : 0,
-        immediateRender: false, // prevent flicker
+        immediateRender: false,
         scrollTrigger: {
           trigger: el,
           start,
-          toggleActions: once
-            ? "play none none none"
-            : "play reverse play reverse",
-          markers: false, // set to true for debugging scrollTrigger positions
-          // You can add 'once: true' here but toggleActions "play none none none" covers it
+          toggleActions: "play none play none",
+          markers: false,
         },
       });
     }, el);
 
-    return () => ctx.revert();
-  }, [ref, from, stagger, delay, duration, staggerDelay, once, skew, start]);
+    return () => ctx.revert(); // cleanup on route change or unmount
+  }, [
+    delay,
+    duration,
+    from,
+    pathname,
+    ref,
+    skew,
+    stagger,
+    staggerDelay,
+    start,
+  ]); // re-run hook on route change
 }
