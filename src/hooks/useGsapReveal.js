@@ -27,17 +27,16 @@ export default function useGsapReveal({
   skew = 3,
   start = "top 90%",
 }) {
-  const pathname = usePathname(); // detects client-side route change
+  const pathname = usePathname();
 
   useLayoutEffect(() => {
     if (!ref?.current) return;
 
     const el = ref.current;
-    const fromVars = directionMap[from] || directionMap.bottom;
     const targets = stagger ? el.children : el;
+    const fromVars = directionMap[from] || directionMap.bottom;
 
     const ctx = gsap.context(() => {
-      // Set initial hidden state
       gsap.set(targets, {
         opacity: 0,
         x: fromVars.x,
@@ -45,8 +44,7 @@ export default function useGsapReveal({
         skewY: skew,
       });
 
-      // Animate to visible with ScrollTrigger
-      gsap.to(targets, {
+      const animationProps = {
         opacity: 1,
         x: 0,
         y: 0,
@@ -56,25 +54,47 @@ export default function useGsapReveal({
         ease: "power3.out",
         stagger: stagger ? staggerDelay : 0,
         immediateRender: false,
+      };
+
+      // Main GSAP animation with ScrollTrigger
+      gsap.to(targets, {
+        ...animationProps,
         scrollTrigger: {
           trigger: el,
           start,
-          toggleActions: "play none play none",
+          toggleActions: once
+            ? "play none none none"
+            : "play reverse play reverse",
           markers: false,
+          onEnter: () => {
+            // If the trigger is already in view, play animation manually
+            const isVisible = isInViewport(el);
+            if (isVisible) {
+              gsap.to(targets, animationProps);
+            }
+          },
         },
       });
     }, el);
 
-    return () => ctx.revert(); // cleanup on route change or unmount
+    return () => ctx.revert();
   }, [
     delay,
     duration,
     from,
+    once,
     pathname,
     ref,
     skew,
     stagger,
     staggerDelay,
     start,
-  ]); // re-run hook on route change
+  ]);
+
+  // Helper: Check if element is in viewport
+  function isInViewport(el) {
+    if (!el || typeof window === "undefined") return false;
+    const rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom > 0;
+  }
 }
