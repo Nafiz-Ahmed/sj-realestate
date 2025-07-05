@@ -31,7 +31,3 @@ img {
   transform: translateY(115px);
   transition: transform 0.5s;
 }
-
-#animate {
-  opacity: 0;
-}

@@ -13,15 +13,11 @@ function Footer() {
   const form = useRef(null);
   const des = useRef(null);
   const bottom = useRef(null);
-  // const sec2 = useRef(null);
-  // const sec3 = useRef(null);
 
   useGsapReveal({ ref: getIn });
   useGsapReveal({ ref: des });
   useGsapReveal({ ref: form, duration: 1 });
   useGsapReveal({ ref: bottom, stagger: true });
-  // useGsapReveal({ ref: sec2 });
-  // useGsapReveal({ ref: sec3 });
 
   return (
     <div className={styles.footerContainer}>
