@@ -20,16 +20,14 @@ function Mortgage() {
       <Container>
         <div className={styles.wrapper}>
           <div className={styles.content}>
-            <h1 id="animate" ref={title}>
-              Plan Your Mortgage with Confidence
-            </h1>
-            <p id="animate" ref={des}>
+            <h1 ref={title}>Plan Your Mortgage with Confidence</h1>
+            <p ref={des}>
               Find out what your monthly payments might look like with our
               easy-to-use mortgage calculator. Whether you&apos;re a first-time
               buyer or planning your next move, get the numbers that help you
               make smarter decisions.
             </p>
-            <div id="animate" ref={button}>
+            <div ref={button}>
               <Button
                 link={Links.pageLinks.mortgageCalculator}
                 text="Try the Mortgage Calculator"

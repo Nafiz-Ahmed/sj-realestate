@@ -16,7 +16,7 @@ function Grid({ children }) {
   return (
     <div>
       <Container>
-        <div id="animate" ref={card} className={styles.grid}>
+        <div ref={card} className={styles.grid}>
           {children}
         </div>
       </Container>

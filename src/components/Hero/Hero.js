@@ -63,23 +63,19 @@ export default function Page() {
       <Container>
         <div className={styles.heroContent}>
           <div className={styles.title}>
-            <div id="animate" ref={line1}>
-              SHAHRIAR
-            </div>
-            <div id="animate" ref={line2}>
-              JOBAYER
-            </div>
-            <div id="animate" ref={line3} className="landing-text">
+            <div ref={line1}>SHAHRIAR</div>
+            <div ref={line2}>JOBAYER</div>
+            <div ref={line3} className="landing-text">
               {scrambleWords[0]}
             </div>
           </div>
 
-          <div id="animate" ref={details} className={styles.description}>
+          <div ref={details} className={styles.description}>
             Your Trusted Guide to Homes in St. John&apos;s – With Heart, Hustle,
             and Local Know-How.
           </div>
 
-          <div id="animate" ref={buttons} className={styles.CTA}>
+          <div ref={buttons} className={styles.CTA}>
             <Button
               text="Browse Listings"
               link={Links.pageLinks.listings}

@@ -25,23 +25,21 @@ function Footer() {
         <div className={styles.wrapper}>
           <div className={styles.top}>
             <div className={styles.getInTouch}>
-              <h1 id="animate" ref={getIn}>
-                Get In Touch
-              </h1>
-              <p id="animate" ref={des}>
+              <h1 ref={getIn}>Get In Touch</h1>
+              <p ref={des}>
                 Ready to start your real estate journey? Send a message or give
                 me a call.
               </p>
             </div>
             <div className={styles.getInTouchForm}>
-              <div className={styles.form} id="animate" ref={form}>
+              <div className={styles.form} ref={form}>
                 <ContactForm />
               </div>
             </div>
           </div>
 
           <div className={styles.bottom}>
-            <div id="animate" ref={bottom} className={styles.bottomContent}>
+            <div ref={bottom} className={styles.bottomContent}>
               <div className={styles.logoSection}>
                 <div className={styles.logo}>
                   <Logo />

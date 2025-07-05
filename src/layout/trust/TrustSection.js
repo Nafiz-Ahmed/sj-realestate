@@ -38,10 +38,10 @@ export default function TrustSection({
     >
       <Container>
         <div className={styles.wrapper}>
-          <h2 id="animate" ref={title} className={styles.heading}>
+          <h2 ref={title} className={styles.heading}>
             {heading}
           </h2>
-          <div id="animate" ref={list} className={styles.points}>
+          <div ref={list} className={styles.points}>
             {points.map((point, index) => (
               <div
                 key={index}
@@ -67,7 +67,7 @@ export default function TrustSection({
           </div>
 
           {button && (
-            <div id="animate" ref={buttons}>
+            <div ref={buttons}>
               <Button
                 link={buttonLink || Links.contactMe.googleMeet}
                 target="_blank"

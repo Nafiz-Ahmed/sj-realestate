@@ -21,10 +21,10 @@ function Listings() {
     <div className={styles.listings}>
       <Container>
         <div className={styles.wrapper}>
-          <div id="animate" ref={title} className={styles.title}>
+          <div ref={title} className={styles.title}>
             Featured Listings
           </div>
-          <div id="animate" ref={des} className={styles.details}>
+          <div ref={des} className={styles.details}>
             Discover your next home in beautiful St. John&apos;s and surrounding
             areas
           </div>
@@ -38,7 +38,6 @@ function Listings() {
           width: "fit-content",
           margin: "0 auto",
         }}
-        id="animate"
         ref={button}
       >
         <Button link={Links.pageLinks.listings} text="See more" />

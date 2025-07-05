@@ -20,10 +20,10 @@ function Sold() {
     <div className={styles.sold}>
       <Container>
         <div className={styles.wrapper}>
-          <div id="animate" ref={title} className={styles.title}>
+          <div ref={title} className={styles.title}>
             Recently Sold Homes
           </div>
-          <div id="animate" ref={des} className={styles.details}>
+          <div ref={des} className={styles.details}>
             A record of success and satisfied clients
           </div>
         </div>
@@ -32,7 +32,6 @@ function Sold() {
       <RenderProperties cardType="sold" loadCount={3} />
 
       <div
-        id="animate"
         ref={button}
         style={{
           width: "fit-content",

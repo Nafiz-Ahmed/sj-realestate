@@ -1,3 +1,5 @@
+"use client";
+
 import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,10 +20,11 @@ export default function useGsapReveal({
   from = "bottom",
   stagger = false,
   delay = 0,
-  duration = 0.5,
+  duration = 0.7,
   staggerDelay = 0.1,
-  once = false,
+  once = true, // play only once by default
   skew = 3,
+  start = "top 90%", // sensible default start trigger
 }) {
   useLayoutEffect(() => {
     if (!ref?.current) return;
@@ -31,7 +34,7 @@ export default function useGsapReveal({
     const targets = stagger ? el.children : el;
 
     const ctx = gsap.context(() => {
-      // Immediately set initial styles to avoid FOUC
+      // Immediately set initial styles to prevent FOUC
       gsap.set(targets, {
         opacity: 0,
         x: fromVars.x,
@@ -39,6 +42,7 @@ export default function useGsapReveal({
         skewY: skew,
       });
 
+      // Animate to visible
       gsap.to(targets, {
         opacity: 1,
         x: 0,
@@ -48,16 +52,19 @@ export default function useGsapReveal({
         delay,
         ease: "power3.out",
         stagger: stagger ? staggerDelay : 0,
+        immediateRender: false, // prevent flicker
         scrollTrigger: {
           trigger: el,
-          start: "top+=5% 90%",
+          start,
           toggleActions: once
             ? "play none none none"
             : "play reverse play reverse",
+          markers: false, // set to true for debugging scrollTrigger positions
+          // You can add 'once: true' here but toggleActions "play none none none" covers it
         },
       });
     }, el);
 
     return () => ctx.revert();
-  }, [ref, from, stagger, delay, duration, staggerDelay, once, skew]);
+  }, [ref, from, stagger, delay, duration, staggerDelay, once, skew, start]);
 }

@@ -117,7 +117,6 @@ const RateHubCalculator = () => {
           )}
 
           <div
-            id="animate"
             ref={containerRef}
             style={{
               width: "100%",

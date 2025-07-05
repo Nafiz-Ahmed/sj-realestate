@@ -39,7 +39,6 @@ function RenderProperties({
 
       {visibleCount < collection.length && loadMore && (
         <div
-          id="animate"
           ref={button}
           style={{
             display: "flex",

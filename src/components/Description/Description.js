@@ -42,7 +42,7 @@ function Description() {
     <div>
       <Container>
         <div className={styles.wrapper}>
-          <div id="animate" ref={animate} className={styles.description}>
+          <div ref={animate} className={styles.description}>
             <h1>
               Your Local Real Estate Professional Dedicated to making your
               property journey seamless and successful.
@@ -57,7 +57,7 @@ function Description() {
             </p>
           </div>
 
-          <div id="animate" ref={card} className={styles.services}>
+          <div ref={card} className={styles.services}>
             {services.map((service, index) => (
               <ServiceCard
                 key={index}
