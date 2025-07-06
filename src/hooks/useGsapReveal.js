@@ -13,7 +13,6 @@ const directionMap = {
   left: { x: -50, y: 0 },
   right: { x: 50, y: 0 },
   center: { x: 0, y: 0 },
-  nav: { y: -500, x: 0 },
 };
 
 export default function useGsapReveal({
@@ -62,7 +61,9 @@ export default function useGsapReveal({
         scrollTrigger: {
           trigger: el,
           start,
-          toggleActions: once ? "play none none none" : "play none play none",
+          toggleActions: once
+            ? "play none none none"
+            : "play complete none reverse",
           markers: false,
           onEnter: () => {
             // If the trigger is already in view, play animation manually
