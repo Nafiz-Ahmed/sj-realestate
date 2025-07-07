@@ -1,17 +1,15 @@
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: "https://sjrealestate.ca",
-  generateRobotsTxt: true, // This will generate robots.txt automatically
+  generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
       {
         userAgent: "*",
-        allow: "/", // Allow all pages to be crawled
-        disallow: "/private/", // (Optional) Block any private routes
+        allow: "/",
       },
     ],
-    additionalSitemaps: [
-      "https://sjrealestate.ca/server-sitemap.xml", // (Optional) For dynamic routes
-    ],
+    additionalSitemaps: ["https://sjrealestate.ca/sitemap.xml"],
   },
-  exclude: ["/admin*", "/thank-you"], // (Optional) Exclude specific pages
+  exclude: ["/admin*", "/404", "/500"],
 };
