@@ -24,7 +24,7 @@ export default function useGsapReveal({
   staggerDelay = 0.1,
   once = false,
   skew = 3,
-  start = "top 90%",
+  start = "top 95%",
 }) {
   const pathname = usePathname();
 

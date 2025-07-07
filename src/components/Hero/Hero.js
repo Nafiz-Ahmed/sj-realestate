@@ -1,50 +1,38 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "./hero.module.css";
 import Container from "@/layout/Container";
 import Button from "@/layout/buttons/Button";
 import * as Links from "@/utils/Links";
 import { useSplitText } from "@/hooks/useSplitText";
-import { useScrambleText } from "@/hooks/useScrambleText";
 import useGsapReveal from "@/hooks/useGsapReveal";
+import useTypeOnText from "@/hooks/useTypeOnText";
 
-const scrambleWords = ["REALESTATE", "PROPERTY", "HOMES", "RESIDENCES"];
+const typeOnText = ["REALESTATE", "HOMES", "PROPERTIES", "LISTINGS"];
 
 export default function Page() {
-  const line1 = useRef(null);
-  const line2 = useRef(null);
-  const line3 = useRef(null);
+  const title = useRef(null);
+  const typeOn = useRef(null);
   const details = useRef(null);
   const buttons = useRef(null);
 
-  useSplitText(line1, {
+  // Parent animation
+  useSplitText(title, {
+    splitOptions: { type: "lines" },
     animation: {
       from: { y: 100, opacity: 0 },
       to: {
         y: 0,
         opacity: 1,
-        duration: 0.4,
         stagger: 0.02,
-        ease: "back.out(1.7)",
+        duration: 0.4,
+        ease: "expo.out",
       },
+      delay: 0.2,
     },
   });
 
-  useSplitText(line2);
-  useSplitText(line3);
-
-  useScrambleText(line3, scrambleWords, {
-    delay: 3,
-    scrambleSettings: {
-      duration: 4,
-      scrambleText: {
-        chars: "01#_<>?!@",
-        newClass: "scramble-effect",
-        revealDelay: 0.3,
-        tweenLength: false,
-      },
-    },
-  });
+  // useTypeOnText(typeOn, typeOnText);
 
   useGsapReveal({
     ref: details,
@@ -63,10 +51,14 @@ export default function Page() {
       <Container>
         <div className={styles.heroContent}>
           <div className={styles.title}>
-            <div ref={line1}>SHAHRIAR</div>
-            <div ref={line2}>JOBAYER</div>
-            <div ref={line3} className="landing-text">
-              {scrambleWords[0]}
+            <div ref={title}>
+              SHARIAR <br /> JOBAYER <br />
+              <span>
+                <span className={styles.typeOn} ref={typeOn}>
+                  {" "}
+                  REALESTATE
+                </span>
+              </span>
             </div>
           </div>
 

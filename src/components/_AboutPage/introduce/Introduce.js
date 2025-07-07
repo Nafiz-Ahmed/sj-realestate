@@ -1,15 +1,39 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import styles from "./introduce.module.css";
 import Container from "@/layout/Container";
 import Image from "next/image";
 import SocialMedia from "@/layout/social/SocialMedia";
+import { useSplitText } from "@/hooks/useSplitText";
+import useGsapReveal from "@/hooks/useGsapReveal";
 
 function Introduce() {
+  const title = useRef(null);
+  const description = useRef(null);
+  const image = useRef(null);
+  const social = useRef(null);
+
+  useSplitText(title, {
+    splitOptions: { type: "words" },
+  });
+
+  useSplitText(description, {
+    splitOptions: { type: "lines" },
+  });
+
+  useGsapReveal({ ref: title });
+
+  useGsapReveal({
+    ref: social,
+    stagger: true,
+  });
+
   return (
     <div>
       <Container>
         <div className={styles.wrapper}>
-          <div className={styles.image}>
+          <div ref={image} className={styles.image}>
             <Image
               alt="portrait"
               fill
@@ -20,8 +44,8 @@ function Introduce() {
 
           <div className={styles.description}>
             <div>
-              <h1>Shahriar’s Story</h1>
-              <p>
+              <h1 ref={title}>Shahriar’s Story</h1>
+              <p ref={description}>
                 Eight years ago, I came to St. John’s as a newcomer, just like
                 many of my clients. I completed my Bachelor&apos;s degree in
                 Computer Science and built strong relationships and a solid
@@ -35,7 +59,7 @@ function Introduce() {
               </p>
             </div>
 
-            <div className={styles.social}>
+            <div ref={social} className={styles.social}>
               <p>Follow me:</p>
               <SocialMedia />
             </div>

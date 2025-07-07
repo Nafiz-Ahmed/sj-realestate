@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import Container from "../Container";
 import styles from "./engage.module.css";
 import Button from "@/layout/buttons/Button";
+import useGsapReveal from "@/hooks/useGsapReveal";
 
 function Engage({
   title = "Title",
@@ -9,8 +12,15 @@ function Engage({
   buttonLink = "/",
   buttonText = "Call me",
 }) {
+  const containerRef = useRef(null);
+
+  useGsapReveal({
+    ref: containerRef,
+  });
+
   return (
     <div
+      ref={containerRef}
       style={{
         padding: "0 var(--edge-gap)",
       }}
@@ -23,11 +33,7 @@ function Engage({
             link={buttonLink}
             target="_blank"
             text={buttonText}
-            style={{
-              backgroundColor: "white",
-              color: "var(--text-color)",
-              fontSize: "cal(var(--primary-text))",
-            }}
+            whiteButton={true}
           />
         </div>
       </Container>

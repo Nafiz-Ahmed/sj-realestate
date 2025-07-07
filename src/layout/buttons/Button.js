@@ -92,7 +92,9 @@ function Button({
     >
       <span ref={flairRef} className={styles.flair}>
         <span
-          className={whiteButton ? styles.flairInnerWhite : styles.flairInner}
+          className={`${
+            whiteButton ? styles.flairInnerWhite : styles.flairInner
+          }`}
         ></span>
       </span>
 

@@ -1,41 +1,58 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import SplitType from "split-type";
-import { useGSAP } from "@gsap/react";
+import SplitText from "gsap/SplitText";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(SplitText);
 
 export function useSplitText(ref, options = {}) {
   const {
-    splitOptions = { types: "chars" },
+    splitOptions = { type: "chars" },
     animation = {
       from: { y: 50, opacity: 0 },
       to: {
         y: 0,
         opacity: 1,
-        stagger: 0.01,
-        duration: 0.3,
+        stagger: 0.03,
+        duration: 0.5,
         ease: "power2.out",
       },
       delay: 0,
     },
+    once = false,
   } = options;
 
-  useGSAP(() => {
+  const splitRef = useRef(null);
+
+  useEffect(() => {
     if (!ref.current) return;
-    ref.current.removeAttribute("id");
 
-    new SplitType(ref.current, splitOptions);
+    // Clean previous splits if any
+    if (splitRef.current) {
+      splitRef.current.revert();
+    }
 
-    const tag = ref.current.tagName.toLowerCase();
-    const chars = gsap.utils.toArray(`${tag} .char`);
+    // Apply split
+    splitRef.current = new SplitText(ref.current, splitOptions);
+    const targets = splitRef.current[splitOptions.type] || [];
 
-    gsap.set(chars, animation.from);
+    // Apply initial state
+    gsap.set(targets, animation.from);
 
-    gsap.to(chars, {
+    const tween = gsap.to(targets, {
       ...animation.to,
       delay: animation.delay,
     });
-  }, [ref, splitOptions, animation]);
+
+    return () => {
+      if (!once) {
+        tween.kill();
+      }
+      if (splitRef.current) {
+        splitRef.current.revert();
+        splitRef.current = null;
+      }
+    };
+  }, [ref, splitOptions, animation, once]);
 }

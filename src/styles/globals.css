@@ -31,3 +31,8 @@ img {
   transform: translateY(115px);
   transition: transform 0.5s;
 }
+
+.landing-text span {
+  display: inline-block;
+  will-change: transform, opacity;
+}
