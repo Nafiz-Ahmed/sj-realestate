@@ -3,6 +3,9 @@ import Engage from "@/layout/engage/Engage";
 import Title from "@/layout/title/Title";
 import React from "react";
 import * as Links from "@/utils/Links";
+import { listingsMeta } from "@/utils/SEO";
+
+export const metadata = listingsMeta;
 
 function page() {
   return (

@@ -10,6 +10,9 @@ import Sold from "@/components/Sold/Sold";
 import Mortgage from "@/components/Mortgage/Mortgage";
 import TrustSection from "@/layout/trust/TrustSection";
 import TrustList from "@/data/HomepageTrust.json";
+import { homeMeta } from "@/utils/SEO";
+
+export const metadata = homeMeta;
 
 function page() {
   return (

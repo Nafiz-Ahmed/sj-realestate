@@ -3,6 +3,9 @@ import EngageTwo from "@/layout/engageTwo/EngageTwo";
 import TrustSection from "@/layout/trust/TrustSection";
 import React from "react";
 import TrustList from "@/data/AboutPageTrust.json";
+import { aboutMeta } from "@/utils/SEO";
+
+export const metadata = aboutMeta;
 
 function About() {
   return (

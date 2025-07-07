@@ -4,6 +4,9 @@ import Title from "@/layout/title/Title";
 import RateHubCalculator from "@/utils/RateHubCalculator";
 import React from "react";
 import * as Links from "@/utils/Links";
+import { mortgageMeta } from "@/utils/SEO";
+
+export const metadata = mortgageMeta;
 
 function page() {
   return (

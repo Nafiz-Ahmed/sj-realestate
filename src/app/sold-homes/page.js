@@ -2,6 +2,9 @@ import SoldHomes from "@/components/_SoldHomesPage/soldHomes/SoldHomes";
 import EngageTwo from "@/layout/engageTwo/EngageTwo";
 import Title from "@/layout/title/Title";
 import React from "react";
+import { soldMeta } from "@/utils/SEO";
+
+export const metadata = soldMeta;
 
 function page() {
   return (
