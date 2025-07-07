@@ -26,7 +26,7 @@ function Logo({
         }}
         href={Links.pageLinks.home}
       >
-        SJ REALESTATE
+        SJ REAL ESTATE
       </Link>
     </div>
   );

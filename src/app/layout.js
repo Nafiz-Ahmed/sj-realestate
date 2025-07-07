@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#ffffff" />
         <meta property="og:url" content="Canonical link preview URL" />
 
-        {/* Google Verification */}
+        {/* Google Verification req */}
         <meta
           name="google-site-verification"
           content={defaultMeta.verification.google}
