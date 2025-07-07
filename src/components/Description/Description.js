@@ -47,7 +47,14 @@ function Description() {
               Your Local Real Estate Professional Dedicated to making your
               property journey seamless and successful.
             </h1>
-            <div className={styles.logo}>S.J.</div>
+            <div className={styles.logo}>
+              <Image
+                src="/images/portait.jpeg"
+                width={150}
+                height={150}
+                alt="portait"
+              />
+            </div>
             <p>
               Welcome to the home of real estate done differently. I’m Shahriar
               Jobayer – your neighbor, your guide, and your Realtor. Whether

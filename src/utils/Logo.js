@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function Logo({
   fontSize = "1.5rem",
-  fontFamily = "var(--font-family-logo)",
+  fontFamily = "var(--font-family)",
   color = "var(--primary-color)",
 }) {
   return (
@@ -13,7 +13,7 @@ function Logo({
         fontSize: `${fontSize}`,
         fontFamily: `${fontFamily}`,
         color: `${color}`,
-        fontWeight: "bold",
+        fontWeight: "900",
         textTransform: "uppercase",
         userSelect: "none",
         cursor: "pointer",

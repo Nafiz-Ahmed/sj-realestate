@@ -6,53 +6,29 @@ import "@/styles/fonts.css";
 import "@/styles/reset.css";
 import "@/styles/globals.css";
 import "@/styles/variables.css";
+import { defaultMeta } from "@/utils/SEO";
 
-export const metadata = {
-  title: "SJ Real Estate | St. John's, Newfoundland",
-  description:
-    "Buy or sell homes in St. John's, NL with SJ Real Estate. Browse MLS® listings, view recently sold properties, calculate mortgage payments, and work with trusted local experts.",
-  keywords: [
-    "St. John's real estate",
-    "SJ Real Estate",
-    "homes for sale NL",
-    "real estate agent Newfoundland",
-    "St. John's MLS listings",
-    "buy house St. John's",
-    "real estate St. John's NL",
-  ],
-  metadataBase: new URL("https://sjrealestate.ca"),
-  openGraph: {
-    title: "SJ Real Estate | St. John's, Newfoundland",
-    description:
-      "Explore real estate listings, sold homes, and mortgage tools with SJ Real Estate — your trusted experts in St. John's, NL.",
-    url: "https://sjrealestate.ca",
-    siteName: "SJ Real Estate",
-    images: [
-      {
-        url: "https://sjrealestate.ca/images/hero2.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "SJ Real Estate - St. John's NL Homes",
-      },
-    ],
-    locale: "en_CA",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "SJ Real Estate | St. John's, Newfoundland",
-    description:
-      "Buy or sell homes in St. John's with SJ Real Estate. Local experts. Updated listings. Fast results.",
-    images: ["https://sjrealestate.ca/images/hero3.jpeg"],
-  },
-  alternates: {
-    canonical: "https://sjrealestate.ca",
-  },
-};
+export const metadata = defaultMeta;
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Essential meta tags */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#ffffff" />
+
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        {/* Google Verification */}
+        <meta
+          name="google-site-verification"
+          content={defaultMeta.verification.google}
+        />
+      </head>
       <body>
         <Layout>{children}</Layout>
       </body>

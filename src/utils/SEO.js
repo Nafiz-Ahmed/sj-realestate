@@ -1,16 +1,28 @@
 const baseUrl = "https://sjrealestate.ca";
 
+// Default images (using relative paths)
 const defaultImages = [
   {
-    url: `${baseUrl}/images/hero2.jpeg`, // Replace with your actual image
+    url: "/images/hero2.jpeg",
     width: 1200,
     height: 630,
     alt: "SJ Real Estate - St. John's NL Homes",
   },
 ];
 
-const defaultMeta = {
+// Enhanced default metadata
+export const defaultMeta = {
   metadataBase: new URL(baseUrl),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     siteName: "SJ Real Estate",
     locale: "en_CA",
@@ -19,21 +31,24 @@ const defaultMeta = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SJ Real Estate | St. John's, Newfoundland",
-    description:
-      "Trusted real estate in St. John's NL. Browse homes, listings, and sold properties with SJ Real Estate.",
-    images: [`${baseUrl}/images/hero3.jpeg`], // Replace with your image
+    images: ["/images/hero3.jpeg"],
+  },
+  verification: {
+    google: "JQryb462VXfLS2Lh_SS_mT69EW3YnKathCvKtPeX8yc", // ← Paste your code here
   },
 };
 
 // Home Page
 export const homeMeta = {
   ...defaultMeta,
-  title: "SJ Real Estate | St. John's, Newfoundland",
+  title: {
+    default: "SJ Real Estate | St. John's, Newfoundland",
+    template: "%s | SJ Real Estate",
+  },
   description:
     "Buy or sell homes in St. John's, NL with SJ Real Estate. Browse MLS® listings, view sold properties, and get expert local guidance.",
   alternates: {
-    canonical: `${baseUrl}`,
+    canonical: "/",
   },
 };
 
@@ -44,7 +59,7 @@ export const listingsMeta = {
   description:
     "Browse the latest MLS® listings in St. John's, Newfoundland. Filter homes by price, location, and more.",
   alternates: {
-    canonical: `${baseUrl}/listings`,
+    canonical: "/listings",
   },
 };
 
@@ -55,7 +70,7 @@ export const soldMeta = {
   description:
     "Explore recently sold homes in St. John's and track the latest real estate market trends.",
   alternates: {
-    canonical: `${baseUrl}/sold-homes`,
+    canonical: "/sold-homes",
   },
 };
 
@@ -66,7 +81,7 @@ export const mortgageMeta = {
   description:
     "Use our mortgage calculator to estimate monthly payments on your next St. John's home. Plan your budget with confidence.",
   alternates: {
-    canonical: `${baseUrl}/mortgage-calculator`,
+    canonical: "/mortgage-calculator",
   },
 };
 
@@ -77,6 +92,6 @@ export const aboutMeta = {
   description:
     "Learn more about SJ Real Estate — your trusted partner for buying and selling homes in St. John's, Newfoundland.",
   alternates: {
-    canonical: `${baseUrl}/about`,
+    canonical: "/about",
   },
 };
