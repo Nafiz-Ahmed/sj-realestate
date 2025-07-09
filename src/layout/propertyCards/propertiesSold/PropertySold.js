@@ -14,31 +14,33 @@ function PropertySold({ data }) {
 
   return (
     <div ref={card} className={styles.propertySold}>
-      <Link href="/">
-        <div className={styles.imageBox}>
-          <Image
-            src={data["Cover Image"].url}
-            alt={data.Slug}
-            fill
-            style={{ objectFit: "cover" }}
-            priority
-          />
+      <div className={styles.propertyCard}>
+        <Link href="/">
+          <div className={styles.imageBox}>
+            <Image
+              src={data["Cover Image"].url}
+              alt={data.Slug}
+              fill
+              style={{ objectFit: "cover" }}
+              priority
+            />
 
-          <div className={styles.tag}>
-            {<Money width={15} height={15} />}
-            {data.Type}
-          </div>
-        </div>
-
-        <div className={styles.propertyDetails}>
-          <div className={styles.location}>
-            <Location width={15} height={15} />
-            {data.Address}
+            <div className={styles.tag}>
+              {<Money width={15} height={15} />}
+              {data.Type}
+            </div>
           </div>
 
-          <div className={styles.name}>{data.Name}</div>
-        </div>
-      </Link>
+          <div className={styles.propertyDetails}>
+            <div className={styles.location}>
+              <Location width={15} height={15} />
+              {data.Address}
+            </div>
+
+            <div className={styles.name}>{data.Name}</div>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

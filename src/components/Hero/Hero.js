@@ -56,7 +56,7 @@ export default function Page() {
               <span>
                 <span className={styles.typeOn} ref={typeOn}>
                   {" "}
-                  REALESTATE
+                  REAL ESTATE
                 </span>
               </span>
             </div>

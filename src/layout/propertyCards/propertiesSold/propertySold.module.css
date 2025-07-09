@@ -1,10 +1,10 @@
-.propertySold:hover,
-.propertySold {
+.propertyCard:hover,
+.propertyCard {
   transition: transform var(--transition);
 }
 
-.propertySold:hover {
-  transform: scale(1.1);
+.propertyCard:hover {
+  transform: scale(0.97);
 }
 
 .imageBox {
